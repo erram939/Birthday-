@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sakshi Birthday Surprise</title>
+
+<style>
+
+body{
+margin:0;
+font-family: 'Poppins', sans-serif;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+color:white;
+text-align:center;
+overflow-x:hidden;
+}
+
+.container{
+padding:30px;
+}
+
+button{
+padding:12px 25px;
+font-size:18px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+margin:10px;
+background:white;
+color:#ff4d6d;
+font-weight:bold;
+}
+
+.hidden{
+display:none;
+}
+
+/* Floating hearts */
+
+.heart{
+position:fixed;
+bottom:-10px;
+font-size:20px;
+animation:float 6s linear infinite;
+color:#ff2e63;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+100%{transform:translateY(-100vh);}
+}
+
+/* Angry meter */
+
+.meter{
+width:80%;
+height:25px;
+background:#fff;
+border-radius:20px;
+margin:auto;
+overflow:hidden;
+}
+
+.meter-fill{
+height:100%;
+background:#ff1744;
+width:100%;
+transition:0.5s;
+}
+
+/* Photo gallery */
+
+.gallery img{
+width:200px;
+border-radius:15px;
+margin:10px;
+}
+
+/* cake */
+
+.cake{
+font-size:80px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+<h1>🎉 Oye Sakshi 🎉</h1>
+
+<p>
+Lya miya... apun itna effort kiya hai 😎  
+QR scan karke idhar tak aa hi gayi matlab curiosity level full hai.
+</p>
+
+<button onclick="start()">Chalo aage dekho</button>
+
+</div>
+
+<!-- GAME 1 -->
+
+<div id="game1" class="container hidden">
+
+<h2>😂 Angry Meter</h2>
+
+<p>
+Sach sach bol… kitna gussa hai apun pe?
+</p>
+
+<div class="meter">
+<div class="meter-fill" id="anger"></div>
+</div>
+
+<p id="angerText">Anger Level: 100%</p>
+
+<button onclick="reduceAnger()">Thoda kam karo</button>
+
+</div>
+
+<!-- PUZZLE -->
+
+<div id="puzzle" class="container hidden">
+
+<h2>🧠 Puzzle Time</h2>
+
+<p>
+Yeh website kisne banayi?
+</p>
+
+<button onclick="wrong()">Elon Musk</button>
+<button onclick="wrong()">Munna Bhai</button>
+<button onclick="correct()">Rameshwar</button>
+
+<p id="puzzleResult"></p>
+
+</div>
+
+<!-- CAKE -->
+
+<div id="cakeSection" class="container hidden">
+
+<h2>🎂 Cake Cutting Time</h2>
+
+<p>Tap the cake to cut it!</p>
+
+<div class="cake" onclick="cutCake()">🎂</div>
+
+<p id="cakeMsg"></p>
+
+</div>
+
+<!-- GALLERY -->
+
+<div id="gallery" class="container hidden">
+
+<h2>📸 Memory Gallery</h2>
+
+<div class="gallery">
+
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+<img src="photo4.jpg">
+<img src="photo5.jpg">
+
+</div>
+
+<button onclick="nextQuestion()">Aage kya hai?</button>
+
+</div>
+
+<!-- FINAL QUESTION -->
+
+<div id="final" class="container hidden">
+
+<h2>Important Question 😎</h2>
+
+<p>
+
+Aaj birthday hai...  
+Toh treat milegi ki nahi?
+
+</p>
+
+<button onclick="yes()">YES</button>
+<button id="noBtn" onmouseover="moveNo()">NO</button>
+
+</div>
+
+<!-- FINAL MESSAGE -->
+
+<div id="end" class="container hidden">
+
+<h1>🎉 Happy Birthday Sakshi 🎉</h1>
+
+<p>
+
+Sach bolu toh apun itna creative nahi hai...  
+par tere birthday ke liye thoda extra try kiya 😄
+
+Have an amazing year ahead!
+
+</p>
+
+</div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+
+let anger=100
+
+function start(){
+
+document.querySelector(".container").classList.add("hidden")
+document.getElementById("game1").classList.remove("hidden")
+
+document.getElementById("music").play()
+
+startHearts()
+
+}
+
+function reduceAnger(){
+
+anger-=20
+
+if(anger<0) anger=0
+
+document.getElementById("anger").style.width=anger+"%"
+
+document.getElementById("angerText").innerText="Anger Level: "+anger+"%"
+
+if(anger==0){
+
+document.getElementById("game1").classList.add("hidden")
+document.getElementById("puzzle").classList.remove("hidden")
+
+}
+
+}
+
+function wrong(){
+
+document.getElementById("puzzleResult").innerText="Galat jawab miya 😂"
+
+}
+
+function correct(){
+
+document.getElementById("puzzleResult").innerText="Sahi pakde hai 😎"
+
+setTimeout(()=>{
+
+document.getElementById("puzzle").classList.add("hidden")
+document.getElementById("cakeSection").classList.remove("hidden")
+
+},1500)
+
+}
+
+function cutCake(){
+
+document.getElementById("cakeMsg").innerText="Cake cut ho gaya 🎉"
+
+confetti({
+particleCount:200,
+spread:100
+})
+
+setTimeout(()=>{
+
+document.getElementById("cakeSection").classList.add("hidden")
+document.getElementById("gallery").classList.remove("hidden")
+
+},2000)
+
+}
+
+function nextQuestion(){
+
+document.getElementById("gallery").classList.add("hidden")
+document.getElementById("final").classList.remove("hidden")
+
+}
+
+function moveNo(){
+
+let btn=document.getElementById("noBtn")
+
+btn.style.position="absolute"
+btn.style.top=Math.random()*80+"%"
+btn.style.left=Math.random()*80+"%"
+
+}
+
+function yes(){
+
+confetti({
+particleCount:300,
+spread:120
+})
+
+document.getElementById("final").classList.add("hidden")
+document.getElementById("end").classList.remove("hidden")
+
+}
+
+function startHearts(){
+
+setInterval(()=>{
+
+let heart=document.createElement("div")
+
+heart.classList.add("heart")
+
+heart.innerHTML="❤️"
+
+heart.style.left=Math.random()*100+"%"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>heart.remove(),6000)
+
+},500)
+
+}
+
+</script>
+
+</html>
+```
