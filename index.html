@@ -113,10 +113,9 @@ pointer-events:none;
 
 <body>
 
-<audio id="music" loop>
-<source src="music.mp3" type="audio/mpeg">
+<audio id="music" loop preload="auto">
+<source src="./music.mp3" type="audio/mpeg">
 </audio>
-
 <!-- INTRO -->
 
 <div id="s1" class="screen">
@@ -336,7 +335,9 @@ function next(a,b){
 document.getElementById(a).classList.add("hidden")
 document.getElementById(b).classList.remove("hidden")
 
-document.getElementById("music").play()
+let music = document.getElementById("music");
+music.volume = 0.6;
+music.play().catch(()=>{});
 
 }
 
