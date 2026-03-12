@@ -91,12 +91,24 @@ animation:float 6s linear infinite;
 }
 
 .finalImg{
-width:85%;
-max-width:320px;
-border-radius:18px;
+width:180px;
+height:180px;
+object-fit:cover;
+border-radius:50%;
 margin-top:20px;
-box-shadow:0 10px 25px rgba(0,0,0,0.25);
+border:5px solid white;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
 }
+
+@keyframes popIn{
+0%{transform:scale(0);opacity:0}
+100%{transform:scale(1);opacity:1}
+}
+
+.finalImg{
+animation:popIn 1.2s ease;
+}
+  
 #noBtn{position:relative}
 
 </style>
@@ -254,7 +266,6 @@ Do I deserve a birthday coffee or treat? 😄
 
 </div>
 
-<!-- FINAL -->
 <div id="s10" class="screen hidden">
 
 <h1>Happy Birthday Sakshi 🎉</h1>
@@ -270,7 +281,6 @@ and many beautiful moments.
 <canvas id="fireworks"></canvas>
 
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
