@@ -2,10 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Sakshi Birthday Surprise</title>
 
 <style>
@@ -15,7 +13,7 @@
 body{
 margin:0;
 font-family:system-ui;
-background:linear-gradient(135deg,#ff7eb3,#ff758c);
+background:linear-gradient(135deg,#ff8a9e,#ff6a88);
 color:white;
 text-align:center;
 overflow:hidden;
@@ -33,8 +31,6 @@ padding:25px;
 
 .hidden{display:none}
 
-h1{margin-bottom:10px}
-
 p{max-width:90%;font-size:18px}
 
 button{
@@ -48,9 +44,7 @@ margin:10px;
 font-weight:bold;
 }
 
-button:active{transform:scale(.95)}
-
-.meter{
+.progress{
 width:85%;
 height:25px;
 background:white;
@@ -61,8 +55,8 @@ margin:20px;
 
 .fill{
 height:100%;
-width:100%;
-background:#ff1744;
+width:0%;
+background:#ff2e63;
 transition:.5s;
 }
 
@@ -98,149 +92,117 @@ animation:float 6s linear infinite;
 
 #noBtn{position:relative}
 
-#fireworks{
-position:fixed;
-top:0;
-left:0;
-width:100vw;
-height:100vh;
-pointer-events:none;
-}
-
 </style>
-
 </head>
 
 <body>
 
-<audio id="music" loop preload="auto">
-<source src="./music.mp3" type="audio/mpeg">
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
 </audio>
+
 <!-- INTRO -->
 
 <div id="s1" class="screen">
 
-<h1>🎉 Hey Sakshi 🎉</h1>
+<h1>Hey Sakshi 👋</h1>
 
 <p>
-If you're seeing this, it means you scanned the QR code.  
-So welcome to a small birthday adventure made just for you.
+If you're seeing this, it means you scanned the QR code.
+So welcome to a small birthday experience made specially for you.
 </p>
 
 <button onclick="next('s1','s2')">Start</button>
 
 </div>
 
-
-<!-- GAME 1 -->
+<!-- HEART GAME -->
 
 <div id="s2" class="screen hidden">
 
-<h1>🎮 Game</h1>
+<h1>Unlock Challenge</h1>
 
-<p>Tap 15 times to unlock the next message.</p>
+<p>Tap the heart 10 times to unlock the first message.</p>
 
-<button onclick="tap()">🎯</button>
+<button onclick="tap()">❤️</button>
 
-<p id="tapCount">0 / 15</p>
+<p id="tapCount">0 / 10</p>
 
 </div>
 
-
-<!-- WOW MOMENT 1 -->
+<!-- MESSAGE -->
 
 <div id="s3" class="screen hidden">
 
-<h1>Wait... 👀</h1>
+<h1>Small Thought</h1>
 
 <p>
-You might be wondering why this exists.
+Some people enter life quietly  
+but somehow make it more interesting.
 
-Because sometimes a normal "Happy Birthday" message  
-feels too ordinary for someone who isn't ordinary.
+You're one of those people.
 </p>
 
 <button onclick="next('s3','s4')">Continue</button>
 
 </div>
 
-
-<!-- ANGER METER -->
+<!-- SMILE GAME -->
 
 <div id="s4" class="screen hidden">
 
-<h1>Anger Meter 😂</h1>
+<h1>Smile Meter</h1>
 
-<p>Let's see how angry you are today.</p>
+<p>Let's see how big your smile can get.</p>
 
-<div class="meter">
-<div id="angerFill" class="fill"></div>
+<div class="progress">
+<div id="meter" class="fill"></div>
 </div>
 
-<p id="angerText">Anger Level: 100%</p>
-
-<button onclick="reduce()">Reduce Anger</button>
+<button onclick="increase()">Increase Smile</button>
 
 </div>
 
-
-<!-- GAME 2 -->
+<!-- MESSAGE -->
 
 <div id="s5" class="screen hidden">
 
-<h1>⚡ Quick Challenge</h1>
+<h1>Another Thing</h1>
 
-<p>Tap 20 times quickly.</p>
+<p>
+You have a strange talent of making normal moments
+feel a little more fun.
 
-<button onclick="fastTap()">TAP</button>
+That's rare.
+</p>
 
-<p id="fastCount">0 / 20</p>
+<button onclick="next('s5','s6')">Next</button>
 
 </div>
 
-
-<!-- WOW MOMENT 2 -->
+<!-- QUIZ -->
 
 <div id="s6" class="screen hidden">
 
-<h1>Small Truth</h1>
+<h1>Quick Question</h1>
 
-<p>
-Some people enter your life quietly…  
-but somehow make it more interesting.
+<p>Which one describes Sakshi best?</p>
 
-You're kind of like that.
-</p>
+<button onclick="serious()">Serious</button>
+<button onclick="funny()">Funny</button>
+<button onclick="boring()">Boring</button>
 
-<button onclick="next('s6','s7')">Next</button>
-
-</div>
-
-
-<!-- PUZZLE -->
-
-<div id="s7" class="screen hidden">
-
-<h1>🧠 Puzzle</h1>
-
-<p>Who made this website?</p>
-
-<button onclick="wrong()">Elon Musk</button>
-<button onclick="wrong()">Random Hacker</button>
-<button onclick="correct()">Someone who wanted to make you smile</button>
-
-<p id="puzzleMsg"></p>
+<p id="quizMsg"></p>
 
 </div>
-
 
 <!-- CAKE -->
 
-<div id="s8" class="screen hidden">
+<div id="s7" class="screen hidden">
 
-<h1>🎂 Cake Time</h1>
+<h1>Birthday Cake 🎂</h1>
 
-<p>Tap the cake to cut it.</p>
+<p>No birthday is complete without cutting the cake.</p>
 
 <div class="cake" onclick="cake()">🎂</div>
 
@@ -248,14 +210,13 @@ You're kind of like that.
 
 </div>
 
+<!-- PHOTOS -->
 
-<!-- GALLERY -->
+<div id="s8" class="screen hidden">
 
-<div id="s9" class="screen hidden">
+<h1>Memories</h1>
 
-<h1>📸 Memories</h1>
-
-<p>Sometimes a photo can bring back an entire moment.</p>
+<p>A few moments worth remembering.</p>
 
 <div id="slider">
 <img id="slideImg" src="photo1.jpg">
@@ -268,232 +229,124 @@ You're kind of like that.
 
 </div>
 
+<!-- QUESTION -->
 
-<!-- WOW MOMENT 3 -->
+<div id="s9" class="screen hidden">
 
-<div id="s10" class="screen hidden">
-
-<h1>Before the Final Question</h1>
-
-<p>
-You know what's funny?
-
-Out of all the people in the world,  
-you're the one who ended up scanning this QR code  
-and reaching here.
-
-Maybe that means something.
-</p>
-
-<button onclick="next('s10','s11')">Continue</button>
-
-</div>
-
-
-<!-- FINAL QUESTION -->
-
-<div id="s11" class="screen hidden">
-
-<h1>One Question</h1>
+<h1>One Last Thing</h1>
 
 <p>
-After all this effort…  
-coding, games, photos, and this surprise…
+After all this effort —
+coding, games, design and this surprise…
 
-Do I at least deserve a birthday treat? 😄
+Do I deserve a birthday coffee or treat? 😄
 </p>
 
-<button onclick="yes()">YES</button>
-<button id="noBtn" onmouseover="run()">NO</button>
+<button onclick="yes()">Yes</button>
+<button id="noBtn" onmouseover="run()">No</button>
 
 </div>
-
 
 <!-- FINAL -->
 
-<div id="s12" class="screen hidden">
+<div id="s10" class="screen hidden">
 
-<h1>🎉 Happy Birthday Sakshi 🎉</h1>
+<h1>Happy Birthday Sakshi 🎉</h1>
 
 <p>
-Hope this small surprise made you smile.
-
-Have an amazing year ahead.
+May this year bring you
+more laughter, happiness,
+and beautiful memories.
 </p>
 
-<canvas id="fireworks"></canvas>
-
 </div>
-
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
 
 function next(a,b){
-
 document.getElementById(a).classList.add("hidden")
 document.getElementById(b).classList.remove("hidden")
-
-let music = document.getElementById("music");
-music.volume = 0.6;
-music.play().catch(()=>{});
-
+document.getElementById("music").play()
 }
 
 let taps=0
-
 function tap(){
-
 taps++
-document.getElementById("tapCount").innerText=taps+" / 15"
-
-if(taps>=15) next("s2","s3")
-
+document.getElementById("tapCount").innerText=taps+" / 10"
+if(taps>=10) next("s2","s3")
 }
 
-let anger=100
-
-function reduce(){
-
-anger-=20
-
-if(anger<0) anger=0
-
-document.getElementById("angerFill").style.width=anger+"%"
-document.getElementById("angerText").innerText="Anger Level: "+anger+"%"
-
-if(anger==0) next("s4","s5")
-
+let smile=0
+function increase(){
+smile+=20
+document.getElementById("meter").style.width=smile+"%"
+if(smile>=100) next("s4","s5")
 }
 
-let fast=0
+/* QUIZ RESPONSES */
 
-function fastTap(){
-
-fast++
-
-document.getElementById("fastCount").innerText=fast+" / 20"
-
-if(fast>=20) next("s5","s6")
-
+function serious(){
+document.getElementById("quizMsg").innerText=
+"Serious? 🤨 Go check the mirror once... you are many things but serious is definitely not one of them 😂"
 }
 
-function wrong(){
-
-document.getElementById("puzzleMsg").innerText="Not correct 😄"
-
+function boring(){
+document.getElementById("quizMsg").innerText=
+"Boring? Impossible. With the amount of drama and fun you bring, boring is not the right word 😄"
 }
 
-function correct(){
-
-document.getElementById("puzzleMsg").innerText="Correct!"
-
-setTimeout(()=>next("s7","s8"),1000)
-
+function funny(){
+document.getElementById("quizMsg").innerText=
+"Yes! That sounds right 😄 A little funny, a little unpredictable… that's Sakshi."
+setTimeout(()=>next("s6","s7"),2000)
 }
 
 function cake(){
-
 document.getElementById("cakeMsg").innerText="Cake Cut 🎉"
-
 confetti({particleCount:200,spread:120})
-
-setTimeout(()=>next("s8","s9"),1500)
-
+setTimeout(()=>next("s7","s8"),1500)
 }
-
-/* PHOTO SLIDER */
 
 let photos=["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg","photo5.jpg"]
 let index=0
 
 function nextPhoto(){
-
 index++
-
-if(index>=photos.length){
-
-next("s9","s10")
-return
-}
-
+if(index>=photos.length){next("s8","s9");return}
 document.getElementById("slideImg").src=photos[index]
-
 }
 
 function prevPhoto(){
-
 index--
-
-if(index<0) index=0
-
+if(index<0)index=0
 document.getElementById("slideImg").src=photos[index]
-
 }
 
-/* RUN BUTTON */
-
 function run(){
-
 let btn=document.getElementById("noBtn")
-
 btn.style.position="absolute"
 btn.style.top=Math.random()*80+"%"
 btn.style.left=Math.random()*80+"%"
-
 }
-
-/* YES */
 
 function yes(){
-
-next("s11","s12")
-
-startFireworks()
-
+next("s9","s10")
+confetti({particleCount:300,spread:180})
 }
 
-/* HEARTS */
-
 setInterval(()=>{
-
 let heart=document.createElement("div")
-
 heart.className="heart"
-
 heart.innerHTML="❤️"
-
 heart.style.left=Math.random()*100+"%"
-
 document.body.appendChild(heart)
-
 setTimeout(()=>heart.remove(),6000)
-
 },600)
-
-/* FIREWORKS */
-
-function startFireworks(){
-
-let canvas=document.getElementById("fireworks")
-
-canvas.width=window.innerWidth
-canvas.height=window.innerHeight
-
-setInterval(()=>{
-
-confetti({
-particleCount:120,
-spread:100,
-origin:{x:Math.random(),y:Math.random()/2}
-})
-
-},700)
-
-}
 
 </script>
 
 </body>
 </html>
+
