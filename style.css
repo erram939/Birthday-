@@ -156,9 +156,9 @@ display:none;
 
 width:85%;
 max-width:350px;
+min-height:420px;
 
 margin-top:30px;
-
 padding:25px;
 
 background:white;
@@ -175,18 +175,21 @@ align-items:center;
 
 }
 
+
 #greetingText{
 
 white-space:pre-line;
 
-margin-top:10px;
+margin-top:15px;
 
 flex-grow:1;
 
+display:flex;
+align-items:center;
+justify-content:center;
+
 }
 
-
-/* final photo */
 
 .final-photo{
 
@@ -201,8 +204,6 @@ object-fit:cover;
 
 border:5px solid #ff4081;
 
-margin-top:20px;
-
-align-self:center;
+margin-top:auto;
 
 }
