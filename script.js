@@ -8,7 +8,7 @@ music.play()
 }, { once:true })
 /* countdown */
 
-let count=10
+let count=5
 
 let timer=setInterval(()=>{
 
