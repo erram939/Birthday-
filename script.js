@@ -92,7 +92,7 @@ function openGreeting(){
 
 document.querySelector(".envelope").style.display="none"
 
-document.getElementById("greetingCard").style.display="block"
+document.getElementById("greetingCard").style.display="flex"
 
 confetti({particleCount:150,spread:100})
 
