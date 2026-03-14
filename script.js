@@ -25,31 +25,32 @@ document.getElementById("page"+page).classList.add("active")
 
 }
 
-/* sliders */
-
-let imgs=["images/pic1.jpg","images/pic2.jpg","images/pic3.jpg","images/pic4.jpg"]
-
-let i=0
-
-setInterval(()=>{
-i=(i+1)%imgs.length
-document.getElementById("slideImg").src=imgs[i]
-},3000)
-
-let j=0
-
-setInterval(()=>{
-j=(j+1)%imgs.length
-document.getElementById("slideImg2").src=imgs[j]
-},3000)
-
-/* cards */
+/* card animation */
 
 setTimeout(()=>card1.classList.add("show"),1000)
 setTimeout(()=>card2.classList.add("show"),2500)
 setTimeout(()=>card3.classList.add("show"),4000)
 
-/* balloons */
+/* photo slider */
+
+let photos=[
+"pic1.jpg",
+"pic2.jpg",
+"pic3.jpg",
+"pic4.jpg"
+]
+
+let photoIndex=0
+
+setInterval(()=>{
+
+photoIndex=(photoIndex+1)%photos.length
+
+document.getElementById("memoryPhoto").src=photos[photoIndex]
+
+},3000)
+
+/* balloon */
 
 function pop(el,msg){
 
@@ -70,12 +71,12 @@ origin:{y:0.6}
 })
 
 setTimeout(()=>{
-nextPage(7)
+nextPage(6)
 },2000)
 
 }
 
-/* letter */
+/* letter typing */
 
 let message=`Happy Birthday ❤️
 
@@ -92,8 +93,6 @@ with happiness, love and success.
 Enjoy your special day 🎂`
 
 function openLetter(){
-
-document.querySelector(".envelope").classList.add("open")
 
 let i=0
 
