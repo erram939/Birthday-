@@ -102,7 +102,7 @@ document.getElementById("greetingCard").style.display="flex"
 
 confetti({particleCount:150,spread:100})
 
-let message=`Happy Birthday ❤️
+let message=`
 
 I just want you to know
 how lucky I feel
