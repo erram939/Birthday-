@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded",function(){
+let music = document.getElementById("bgMusic")
 
+document.body.addEventListener("click", function(){
+
+music.play()
+
+}, { once:true })
 /* countdown */
 
 let count=10
