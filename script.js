@@ -34,10 +34,10 @@ setTimeout(()=>card3.classList.add("show"),4000)
 /* photo slider */
 
 let photos=[
-"pic1.jpg",
-"pic2.jpg",
-"pic3.jpg",
-"pic4.jpg"
+"photo1.jpg",
+"photo4.png",
+"photo3.jpg",
+"photo2.jpg"
 ]
 
 let photoIndex=0
