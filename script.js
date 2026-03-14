@@ -1,4 +1,4 @@
-/* COUNTDOWN */
+/* countdown */
 
 let count=10
 
@@ -18,7 +18,9 @@ nextPage(2)
 
 },1000)
 
-/* PAGE CHANGE */
+
+
+/* page switch */
 
 function nextPage(page){
 
@@ -28,7 +30,9 @@ document.getElementById("page"+page).classList.add("active")
 
 }
 
-/* CARD FLIP */
+
+
+/* flip cards */
 
 function flipCard(card){
 
@@ -36,29 +40,32 @@ card.classList.toggle("flipped")
 
 }
 
-/* PHOTO SLIDER */
 
-let photos=["pic1.jpg","pic2.jpg","pic3.jpg","pic4.jpg"]
 
-let index=0
+/* photo slider */
+
+let photos=[
+"pic1.jpg",
+"pic2.jpg",
+"pic3.jpg",
+"pic4.jpg"
+]
+
+let photoIndex=0
 
 setInterval(()=>{
 
-index=(index+1)%photos.length
+photoIndex=(photoIndex+1)%photos.length
 
-let img=document.getElementById("memoryPhoto")
-
-if(img){
-
-img.src=photos[index]
-
-}
+document.getElementById("memoryPhoto").src=photos[photoIndex]
 
 },3000)
 
-/* BALLOON POP */
 
-function pop(el,msg){
+
+/* balloon pop */
+
+function popBalloon(el,msg){
 
 el.classList.add("pop")
 
@@ -66,7 +73,9 @@ document.getElementById("balloonMsg").innerText=msg
 
 }
 
-/* CAKE CONFETTI */
+
+
+/* cake celebration */
 
 function celebrate(){
 
@@ -88,11 +97,23 @@ nextPage(6)
 
 }
 
-/* LETTER MESSAGE */
 
-function openLetter(){
 
-document.getElementById("letterCard").style.display="block"
+/* greeting card */
+
+function openGreeting(){
+
+document.querySelector(".envelope").style.display="none"
+
+document.getElementById("greetingCard").style.display="block"
+
+confetti({
+
+particleCount:150,
+
+spread:100
+
+})
 
 let message=`Happy Birthday ❤️
 
@@ -112,13 +133,18 @@ let i=0
 
 function type(){
 
-if(i<message.length){
+if(i < message.length){
 
-document.getElementById("letterText").innerHTML+=message.charAt(i)
+document.getElementById("greetingText").innerHTML += message.charAt(i)
 
 i++
 
 setTimeout(type,40)
+
+}
+else{
+
+document.getElementById("finalPhoto").style.display="block"
 
 }
 
