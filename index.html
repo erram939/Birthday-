@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Birthday Surprise</title>
 
 <link rel="stylesheet" href="style.css">
@@ -12,22 +16,24 @@
 
 <body>
 
-<audio autoplay loop>
-<source src="song.mp3" type="audio/mpeg">
-</audio>
-
-<!-- PAGE 1 COUNTDOWN -->
+<!-- PAGE 1 -->
 
 <section id="page1" class="active">
-<h1>Wait a moment...</h1>
+
+<h1>Something Special is Coming...</h1>
+
 <div id="countdown">10</div>
+
 </section>
+
 
 <!-- PAGE 2 FLIP CARDS -->
 
 <section id="page2">
 
-<h1>Click the cards 💌</h1>
+<h1>Click the Cards 💌</h1>
+
+<div class="card-container">
 
 <div class="flip-card" onclick="flipCard(this)">
 <div class="flip-inner">
@@ -39,7 +45,7 @@
 <div class="flip-card" onclick="flipCard(this)">
 <div class="flip-inner">
 <div class="flip-front">Click Me</div>
-<div class="flip-back">It's the birthday of someone very special...</div>
+<div class="flip-back">It's the birthday of someone amazing...</div>
 </div>
 </div>
 
@@ -50,43 +56,58 @@
 </div>
 </div>
 
+</div>
+
 <button onclick="nextPage(3)">Next</button>
 
 </section>
+
 
 <!-- PAGE 3 PHOTO SLIDER -->
 
 <section id="page3">
 
-<h1>Some Beautiful Memories ❤️</h1>
+<h1>Beautiful Memories ❤️</h1>
 
 <div class="photo-container">
-<img id="memoryPhoto" src="photo1.jpg">
+
+<img id="memoryPhoto" src="pic1.jpg">
+
 </div>
 
-<button onclick="nextPage(4)">Continue</button>
+<button onclick="nextPage(4)">Next</button>
 
 </section>
+
 
 <!-- PAGE 4 BALLOONS -->
 
 <section id="page4">
 
-<h1>Pop the balloons 🎈</h1>
+<h1>Pop the Balloons 🎈</h1>
 
-<img class="balloon" src="https://cdn-icons-png.flaticon.com/512/744/744546.png" onclick="pop(this,'You are Kind')">
+<div class="balloon-container">
 
-<img class="balloon" src="https://cdn-icons-png.flaticon.com/512/744/744546.png" onclick="pop(this,'You are Amazing')">
+<img class="balloon" src="https://cdn-icons-png.flaticon.com/512/744/744546.png"
+onclick="popBalloon(this,'You are Kind')">
 
-<img class="balloon" src="https://cdn-icons-png.flaticon.com/512/744/744546.png" onclick="pop(this,'You are Strong')">
+<img class="balloon" src="https://cdn-icons-png.flaticon.com/512/744/744546.png"
+onclick="popBalloon(this,'You are Amazing')">
 
-<img class="balloon" src="https://cdn-icons-png.flaticon.com/512/744/744546.png" onclick="pop(this,'You are Very Special ❤️')">
+<img class="balloon" src="https://cdn-icons-png.flaticon.com/512/744/744546.png"
+onclick="popBalloon(this,'You are Strong')">
+
+<img class="balloon" src="https://cdn-icons-png.flaticon.com/512/744/744546.png"
+onclick="popBalloon(this,'You are Very Special ❤️')">
+
+</div>
 
 <p id="balloonMsg"></p>
 
 <button onclick="nextPage(5)">Next</button>
 
 </section>
+
 
 <!-- PAGE 5 CAKE -->
 
@@ -100,6 +121,7 @@ onclick="celebrate()">
 
 </section>
 
+
 <!-- PAGE 6 ENVELOPE -->
 
 <section id="page6">
@@ -108,10 +130,16 @@ onclick="celebrate()">
 
 <img class="envelope"
 src="https://cdn-icons-png.flaticon.com/512/561/561127.png"
-onclick="openLetter()">
+onclick="openGreeting()">
 
-<div id="letterCard" class="letter-card">
-<p id="letterText"></p>
+<div id="greetingCard" class="greeting-card">
+
+<h2>Happy Birthday 🎉</h2>
+
+<p id="greetingText"></p>
+
+<img id="finalPhoto" src="final.jpg" class="final-photo">
+
 </div>
 
 </section>
