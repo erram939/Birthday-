@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <title>Birthday Surprise</title>
 
@@ -13,7 +14,7 @@
 <body>
 
 <audio autoplay loop>
-<source src="music/song.mp3" type="audio/mpeg">
+<source src="song.mp3" type="audio/mpeg">
 </audio>
 
 <!-- PAGE 1 -->
@@ -26,33 +27,41 @@
 
 </section>
 
-<!-- PAGE 2 PHOTO SLIDER -->
+<!-- PAGE 2 MESSAGE CARDS -->
 
 <section id="page2">
 
-<h1>Some Special Memories ❤️</h1>
+<h1>A little message for you</h1>
 
-<div class="slider">
-<img id="slideImg" src="images/pic1.jpg">
+<div class="card" id="card1">
+Today is not just another day...
 </div>
 
-<button onclick="nextPage(3)">Continue</button>
+<div class="card" id="card2">
+It's the birthday of someone very special...
+</div>
+
+<div class="card" id="card3">
+And that someone is YOU ❤️
+</div>
+
+<button onclick="nextPage(3)">Next</button>
 
 </section>
 
-<!-- PAGE 3 MESSAGE CARDS -->
+<!-- PAGE 3 PHOTO SLIDER -->
 
 <section id="page3">
 
-<h1>A little message for you</h1>
+<h1>Some beautiful memories with you ❤️</h1>
 
-<div class="card" id="card1">Today is not just another day...</div>
+<div class="photo-container">
 
-<div class="card" id="card2">It's the birthday of someone very special...</div>
+<img id="memoryPhoto" src="pic1.jpg">
 
-<div class="card" id="card3">And that someone is YOU ❤️</div>
+</div>
 
-<button onclick="nextPage(4)">Next Surprise</button>
+<button onclick="nextPage(4)">Continue</button>
 
 </section>
 
@@ -62,37 +71,31 @@
 
 <h1>Pop the balloons 🎈</h1>
 
-<img class="balloon" src="https://cdn-icons-png.flaticon.com/512/616/616408.png" onclick="pop(this,'You are Kind')">
+<img class="balloon"
+src="https://cdn-icons-png.flaticon.com/512/616/616408.png"
+onclick="pop(this,'You are Kind')">
 
-<img class="balloon" src="https://cdn-icons-png.flaticon.com/512/616/616408.png" onclick="pop(this,'You are Amazing')">
+<img class="balloon"
+src="https://cdn-icons-png.flaticon.com/512/616/616408.png"
+onclick="pop(this,'You are Amazing')">
 
-<img class="balloon" src="https://cdn-icons-png.flaticon.com/512/616/616408.png" onclick="pop(this,'You are Strong')">
+<img class="balloon"
+src="https://cdn-icons-png.flaticon.com/512/616/616408.png"
+onclick="pop(this,'You are Strong')">
 
-<img class="balloon" src="https://cdn-icons-png.flaticon.com/512/616/616408.png" onclick="pop(this,'You are Very Special ❤️')">
+<img class="balloon"
+src="https://cdn-icons-png.flaticon.com/512/616/616408.png"
+onclick="pop(this,'You are Very Special ❤️')">
 
 <p id="balloonMsg"></p>
 
-<button onclick="nextPage(5)">Continue</button>
+<button onclick="nextPage(5)">Next</button>
 
 </section>
 
-<!-- PAGE 5 SECOND SLIDER -->
+<!-- PAGE 5 CAKE -->
 
 <section id="page5">
-
-<h1>More Memories...</h1>
-
-<div class="slider">
-<img id="slideImg2" src="images/pic2.jpg">
-</div>
-
-<button onclick="nextPage(6)">Next</button>
-
-</section>
-
-<!-- PAGE 6 CAKE -->
-
-<section id="page6">
 
 <h1>Make a Wish 🎂</h1>
 
@@ -102,9 +105,9 @@ onclick="celebrate()">
 
 </section>
 
-<!-- PAGE 7 ENVELOPE -->
+<!-- PAGE 6 ENVELOPE -->
 
-<section id="page7">
+<section id="page6">
 
 <h1>Open Your Letter 💌</h1>
 
