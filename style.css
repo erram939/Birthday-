@@ -1,6 +1,6 @@
 body{
 margin:0;
-font-family:'Segoe UI',sans-serif;
+font-family:Arial;
 background:linear-gradient(135deg,#ffdde1,#ee9ca7);
 text-align:center;
 }
@@ -21,26 +21,9 @@ margin-top:100px;
 color:white;
 }
 
-.card{
-background:white;
-padding:25px;
-margin:20px auto;
-width:280px;
-border-radius:12px;
-box-shadow:0 6px 20px rgba(0,0,0,0.2);
-opacity:0;
-transform:translateY(40px);
-transition:1s;
-}
-
-.card.show{
-opacity:1;
-transform:translateY(0);
-}
-
+/* FLIP CARDS */
 
 .flip-card{
-background:transparent;
 width:250px;
 height:150px;
 margin:20px auto;
@@ -60,8 +43,7 @@ transform-style:preserve-3d;
 transform:rotateY(180deg);
 }
 
-.flip-front,
-.flip-back{
+.flip-front,.flip-back{
 position:absolute;
 width:100%;
 height:100%;
@@ -70,7 +52,7 @@ display:flex;
 align-items:center;
 justify-content:center;
 border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
 }
 
 .flip-front{
@@ -83,6 +65,8 @@ color:white;
 transform:rotateY(180deg);
 padding:15px;
 }
+
+/* PHOTO SLIDER */
 
 .photo-container{
 width:320px;
@@ -99,10 +83,12 @@ height:100%;
 object-fit:cover;
 }
 
+/* BALLOONS */
+
 .balloon{
 width:90px;
-cursor:pointer;
 margin:15px;
+cursor:pointer;
 transition:0.3s;
 }
 
@@ -111,29 +97,25 @@ transform:scale(0);
 opacity:0;
 }
 
+/* CAKE */
+
 .cake{
 width:200px;
 cursor:pointer;
-margin-top:30px;
 }
+
+/* ENVELOPE */
 
 .envelope{
 width:200px;
 cursor:pointer;
 }
 
-#letter{
-max-width:500px;
-margin:auto;
-font-size:20px;
-color:white;
-white-space:pre-line;
-padding:20px;
-}
+/* LETTER CARD */
 
 .letter-card{
 background:white;
-width:300px;
+width:320px;
 margin:30px auto;
 padding:25px;
 border-radius:10px;
@@ -146,13 +128,14 @@ animation:fadeIn 1s;
 from{opacity:0;transform:translateY(20px)}
 to{opacity:1;transform:translateY(0)}
 }
+
 button{
-padding:12px 25px;
+padding:10px 20px;
 font-size:16px;
 border:none;
 background:#ff4081;
 color:white;
-border-radius:6px;
+border-radius:5px;
 cursor:pointer;
-margin-top:25px;
+margin-top:20px;
 }
