@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded",function(){
+
 /* countdown */
 
 let count=10
@@ -20,7 +22,29 @@ nextPage(2)
 
 
 
-/* page switch */
+/* photo slider */
+
+let photos=["photo1.jpg","photo4.png","photo3.jpg","photo2.jpg"]
+
+let index=0
+
+setInterval(()=>{
+
+let img=document.getElementById("memoryPhoto")
+
+if(img){
+
+index=(index+1)%photos.length
+
+img.src=photos[index]
+
+}
+
+},3000)
+
+})
+
+
 
 function nextPage(page){
 
@@ -32,8 +56,6 @@ document.getElementById("page"+page).classList.add("active")
 
 
 
-/* flip cards */
-
 function flipCard(card){
 
 card.classList.toggle("flipped")
@@ -41,29 +63,6 @@ card.classList.toggle("flipped")
 }
 
 
-
-/* photo slider */
-
-let photos=[
-"pic1.jpg",
-"pic2.jpg",
-"pic3.jpg",
-"pic4.jpg"
-]
-
-let photoIndex=0
-
-setInterval(()=>{
-
-photoIndex=(photoIndex+1)%photos.length
-
-document.getElementById("memoryPhoto").src=photos[photoIndex]
-
-},3000)
-
-
-
-/* balloon pop */
 
 function popBalloon(el,msg){
 
@@ -75,19 +74,9 @@ document.getElementById("balloonMsg").innerText=msg
 
 
 
-/* cake celebration */
-
 function celebrate(){
 
-confetti({
-
-particleCount:200,
-
-spread:120,
-
-origin:{y:0.6}
-
-})
+confetti({particleCount:200,spread:120})
 
 setTimeout(()=>{
 
@@ -99,21 +88,13 @@ nextPage(6)
 
 
 
-/* greeting card */
-
 function openGreeting(){
 
 document.querySelector(".envelope").style.display="none"
 
 document.getElementById("greetingCard").style.display="block"
 
-confetti({
-
-particleCount:150,
-
-spread:100
-
-})
+confetti({particleCount:150,spread:100})
 
 let message=`Happy Birthday ❤️
 
@@ -124,18 +105,15 @@ to have you in my life.
 You are not just my best friend,
 you are someone very special to me.
 
-May your life always be filled
-with happiness and love.
-
 Enjoy your special day 🎂`
 
 let i=0
 
 function type(){
 
-if(i < message.length){
+if(i<message.length){
 
-document.getElementById("greetingText").innerHTML += message.charAt(i)
+document.getElementById("greetingText").innerHTML+=message.charAt(i)
 
 i++
 
