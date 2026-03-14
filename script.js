@@ -17,6 +17,12 @@ nextPage(2)
 
 /* page change */
 
+function flipCard(card){
+
+card.classList.toggle("flipped")
+
+}
+
 function nextPage(page){
 
 document.querySelectorAll("section").forEach(s=>s.classList.remove("active"))
@@ -94,13 +100,26 @@ Enjoy your special day 🎂`
 
 function openLetter(){
 
+document.getElementById("letterCard").style.display="block"
+
+let message=`Happy Birthday ❤️
+
+I just want you to know
+how lucky I feel
+to have you in my life.
+
+You are not just my best friend,
+you are someone very special to me.
+
+Enjoy your special day 🎂`
+
 let i=0
 
 function type(){
 
 if(i<message.length){
 
-document.getElementById("letter").innerHTML+=message.charAt(i)
+document.getElementById("letterText").innerHTML+=message.charAt(i)
 
 i++
 
