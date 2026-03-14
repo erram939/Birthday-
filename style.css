@@ -169,27 +169,25 @@ box-shadow:0 10px 25px rgba(0,0,0,.3);
 
 text-align:center;
 
-display:flex;
 flex-direction:column;
 align-items:center;
 
 }
 
-
 #greetingText{
 
 white-space:pre-line;
-
 margin-top:15px;
 
-flex-grow:1;
+flex:1;
 
 display:flex;
 align-items:center;
 justify-content:center;
 
-}
+text-align:center;
 
+}
 
 .final-photo{
 
@@ -199,11 +197,12 @@ width:120px;
 height:120px;
 
 border-radius:50%;
-
 object-fit:cover;
 
 border:5px solid #ff4081;
 
 margin-top:auto;
+margin-left:auto;
+margin-right:auto;
 
 }
