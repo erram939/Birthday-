@@ -1,4 +1,4 @@
-/* countdown */
+/* COUNTDOWN */
 
 let count=10
 
@@ -9,19 +9,16 @@ count--
 document.getElementById("countdown").innerText=count
 
 if(count==0){
+
 clearInterval(timer)
+
 nextPage(2)
+
 }
 
 },1000)
 
-/* page change */
-
-function flipCard(card){
-
-card.classList.toggle("flipped")
-
-}
+/* PAGE CHANGE */
 
 function nextPage(page){
 
@@ -31,32 +28,35 @@ document.getElementById("page"+page).classList.add("active")
 
 }
 
-/* card animation */
+/* CARD FLIP */
 
-setTimeout(()=>card1.classList.add("show"),1000)
-setTimeout(()=>card2.classList.add("show"),2500)
-setTimeout(()=>card3.classList.add("show"),4000)
+function flipCard(card){
 
-/* photo slider */
+card.classList.toggle("flipped")
 
-let photos=[
-"photo1.jpg",
-"photo4.png",
-"photo3.jpg",
-"photo2.jpg"
-]
+}
 
-let photoIndex=0
+/* PHOTO SLIDER */
+
+let photos=["pic1.jpg","pic2.jpg","pic3.jpg","pic4.jpg"]
+
+let index=0
 
 setInterval(()=>{
 
-photoIndex=(photoIndex+1)%photos.length
+index=(index+1)%photos.length
 
-document.getElementById("memoryPhoto").src=photos[photoIndex]
+let img=document.getElementById("memoryPhoto")
+
+if(img){
+
+img.src=photos[index]
+
+}
 
 },3000)
 
-/* balloon */
+/* BALLOON POP */
 
 function pop(el,msg){
 
@@ -66,37 +66,29 @@ document.getElementById("balloonMsg").innerText=msg
 
 }
 
-/* cake celebration */
+/* CAKE CONFETTI */
 
 function celebrate(){
 
 confetti({
+
 particleCount:200,
+
 spread:120,
+
 origin:{y:0.6}
+
 })
 
 setTimeout(()=>{
+
 nextPage(6)
+
 },2000)
 
 }
 
-/* letter typing */
-
-let message=`Happy Birthday ❤️
-
-I just want you to know
-how lucky I feel
-to have you in my life.
-
-You are not just my best friend,
-you are someone very special to me.
-
-May your life always be filled
-with happiness, love and success.
-
-Enjoy your special day 🎂`
+/* LETTER MESSAGE */
 
 function openLetter(){
 
@@ -110,6 +102,9 @@ to have you in my life.
 
 You are not just my best friend,
 you are someone very special to me.
+
+May your life always be filled
+with happiness and love.
 
 Enjoy your special day 🎂`
 
