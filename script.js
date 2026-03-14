@@ -111,7 +111,7 @@ to have you in my life.
 You are not just my best friend,
 you are someone very special to me.
 
-Enjoy your special day 🎂`
+Enjoy your special day Beutiful 🎂`
 
 let i=0
 
