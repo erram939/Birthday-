@@ -1,372 +1,122 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sakshi Birthday Surprise</title>
+<title>Birthday Surprise</title>
 
-<style>
+<link rel="stylesheet" href="style.css">
 
-*{box-sizing:border-box}
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-body{
-margin:0;
-font-family:system-ui;
-background:linear-gradient(135deg,#ff8a9e,#ff6a88);
-color:white;
-text-align:center;
-overflow:hidden;
-}
-
-.screen{
-height:100vh;
-width:100vw;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-padding:25px;
-}
-
-.hidden{display:none}
-
-p{max-width:90%;font-size:18px}
-
-button{
-padding:14px 25px;
-font-size:18px;
-border:none;
-border-radius:30px;
-background:white;
-color:#ff4d6d;
-margin:10px;
-font-weight:bold;
-}
-
-.progress{
-width:85%;
-height:25px;
-background:white;
-border-radius:20px;
-overflow:hidden;
-margin:20px;
-}
-
-.fill{
-height:100%;
-width:0%;
-background:#ff2e63;
-transition:.5s;
-}
-
-.cake{
-font-size:90px;
-cursor:pointer;
-}
-
-#slider{
-width:90%;
-max-width:350px;
-border-radius:15px;
-overflow:hidden;
-margin:20px;
-}
-
-#slider img{
-width:100%;
-border-radius:15px;
-}
-
-.heart{
-position:fixed;
-bottom:-10px;
-font-size:18px;
-animation:float 6s linear infinite;
-}
-
-@keyframes float{
-0%{transform:translateY(0)}
-100%{transform:translateY(-110vh)}
-}
-
-.finalImg{
-width:180px;
-height:180px;
-object-fit:cover;
-border-radius:50%;
-margin-top:20px;
-border:5px solid white;
-box-shadow:0 10px 30px rgba(0,0,0,0.3);
-}
-
-@keyframes popIn{
-0%{transform:scale(0);opacity:0}
-100%{transform:scale(1);opacity:1}
-}
-
-.finalImg{
-animation:popIn 1.2s ease;
-}
-  
-#noBtn{position:relative}
-
-</style>
 </head>
 
 <body>
 
-<audio id="music" loop>
-<source src="music.mp3" type="audio/mpeg">
+<audio autoplay loop>
+<source src="music/song.mp3" type="audio/mpeg">
 </audio>
 
-<!-- INTRO -->
+<!-- PAGE 1 -->
 
-<div id="s1" class="screen">
+<section id="page1" class="active">
 
-<h1>Hey Sakshi 👋</h1>
+<h1>Wait a moment...</h1>
 
-<p>
-If you're seeing this, it means you scanned the QR code.
-So welcome to a small birthday experience made specially for you.
-</p>
+<div id="countdown">10</div>
 
-<button onclick="next('s1','s2')">Start</button>
+</section>
 
+<!-- PAGE 2 PHOTO SLIDER -->
+
+<section id="page2">
+
+<h1>Some Special Memories ❤️</h1>
+
+<div class="slider">
+<img id="slideImg" src="images/pic1.jpg">
 </div>
 
-<!-- HEART GAME -->
+<button onclick="nextPage(3)">Continue</button>
 
-<div id="s2" class="screen hidden">
+</section>
 
-<h1>Unlock Challenge</h1>
+<!-- PAGE 3 MESSAGE CARDS -->
 
-<p>Tap the heart 10 times to unlock the first message.</p>
+<section id="page3">
 
-<button onclick="tap()">❤️</button>
+<h1>A little message for you</h1>
 
-<p id="tapCount">0 / 10</p>
+<div class="card" id="card1">Today is not just another day...</div>
 
+<div class="card" id="card2">It's the birthday of someone very special...</div>
+
+<div class="card" id="card3">And that someone is YOU ❤️</div>
+
+<button onclick="nextPage(4)">Next Surprise</button>
+
+</section>
+
+<!-- PAGE 4 BALLOONS -->
+
+<section id="page4">
+
+<h1>Pop the balloons 🎈</h1>
+
+<img class="balloon" src="https://cdn-icons-png.flaticon.com/512/616/616408.png" onclick="pop(this,'You are Kind')">
+
+<img class="balloon" src="https://cdn-icons-png.flaticon.com/512/616/616408.png" onclick="pop(this,'You are Amazing')">
+
+<img class="balloon" src="https://cdn-icons-png.flaticon.com/512/616/616408.png" onclick="pop(this,'You are Strong')">
+
+<img class="balloon" src="https://cdn-icons-png.flaticon.com/512/616/616408.png" onclick="pop(this,'You are Very Special ❤️')">
+
+<p id="balloonMsg"></p>
+
+<button onclick="nextPage(5)">Continue</button>
+
+</section>
+
+<!-- PAGE 5 SECOND SLIDER -->
+
+<section id="page5">
+
+<h1>More Memories...</h1>
+
+<div class="slider">
+<img id="slideImg2" src="images/pic2.jpg">
 </div>
 
-<!-- MESSAGE -->
+<button onclick="nextPage(6)">Next</button>
 
-<div id="s3" class="screen hidden">
+</section>
 
-<h1>Small Thought</h1>
+<!-- PAGE 6 CAKE -->
 
-<p>
-Some people enter life quietly  
-but somehow make it more interesting.
+<section id="page6">
 
-You're one of those people.
-</p>
+<h1>Make a Wish 🎂</h1>
 
-<button onclick="next('s3','s4')">Continue</button>
+<img class="cake"
+src="https://cdn-icons-png.flaticon.com/512/3468/3468374.png"
+onclick="celebrate()">
 
-</div>
+</section>
 
-<!-- SMILE GAME -->
+<!-- PAGE 7 ENVELOPE -->
 
-<div id="s4" class="screen hidden">
+<section id="page7">
 
-<h1>Smile Meter</h1>
+<h1>Open Your Letter 💌</h1>
 
-<p>Let's see how big your smile can get.</p>
+<img class="envelope"
+src="https://cdn-icons-png.flaticon.com/512/561/561127.png"
+onclick="openLetter()">
 
-<div class="progress">
-<div id="meter" class="fill"></div>
-</div>
+<div id="letter"></div>
 
-<button onclick="increase()">Increase Smile</button>
+</section>
 
-</div>
-
-<!-- MESSAGE -->
-
-<div id="s5" class="screen hidden">
-
-<h1>Another Thing</h1>
-
-<p>
-You have a strange talent of making normal moments
-feel a little more fun.
-
-That's rare.
-</p>
-
-<button onclick="next('s5','s6')">Next</button>
-
-</div>
-
-<!-- QUIZ -->
-
-<div id="s6" class="screen hidden">
-
-<h1>Quick Question</h1>
-
-<p>Which one describes Sakshi best?</p>
-
-<button onclick="serious()">Serious</button>
-<button onclick="funny()">Funny</button>
-<button onclick="boring()">Boring</button>
-
-<p id="quizMsg"></p>
-
-</div>
-
-<!-- CAKE -->
-
-<div id="s7" class="screen hidden">
-
-<h1>Birthday Cake 🎂</h1>
-
-<p>No birthday is complete without cutting the cake.</p>
-
-<div class="cake" onclick="cake()">🎂</div>
-
-<p id="cakeMsg"></p>
-
-</div>
-
-<!-- PHOTOS -->
-
-<div id="s8" class="screen hidden">
-
-<h1>Memories</h1>
-
-<p>A few moments worth remembering.</p>
-
-<div id="slider">
-<img id="slideImg" src="photo1.jpg">
-</div>
-
-<div>
-<button onclick="prevPhoto()">⬅</button>
-<button onclick="nextPhoto()">➡</button>
-</div>
-
-</div>
-
-<!-- QUESTION -->
-
-<div id="s9" class="screen hidden">
-
-<h1>One Last Thing</h1>
-
-<p>
-After all this effort —
-coding, games, design and this surprise…
-
-Do I deserve a birthday coffee or treat? 😄
-</p>
-
-<button onclick="yes()">Yes</button>
-<button id="noBtn" onmouseover="run()">No</button>
-
-</div>
-
-<div id="s10" class="screen hidden">
-
-<h1>Happy Birthday Sakshi 🎉</h1>
-
-<p>
-May this year bring you  
-more laughter, good surprises,  
-and many beautiful moments.
-</p>
-
-<img src="final.jpg" class="finalImg">
-
-<canvas id="fireworks"></canvas>
-
-</div>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-<script>
-
-function next(a,b){
-document.getElementById(a).classList.add("hidden")
-document.getElementById(b).classList.remove("hidden")
-document.getElementById("music").play()
-}
-
-let taps=0
-function tap(){
-taps++
-document.getElementById("tapCount").innerText=taps+" / 10"
-if(taps>=10) next("s2","s3")
-}
-
-let smile=0
-function increase(){
-smile+=20
-document.getElementById("meter").style.width=smile+"%"
-if(smile>=100) next("s4","s5")
-}
-
-/* QUIZ RESPONSES */
-
-function serious(){
-document.getElementById("quizMsg").innerText=
-"Serious? 🤨 Go check the mirror once... you are many things but serious is definitely not one of them 😂"
-}
-
-function boring(){
-document.getElementById("quizMsg").innerText=
-"Boring? Impossible. With the amount of drama and fun you bring, boring is not the right word 😄"
-}
-
-function funny(){
-document.getElementById("quizMsg").innerText=
-"Yes! That sounds right 😄 A little funny, a little unpredictable… that's Sakshi."
-setTimeout(()=>next("s6","s7"),2000)
-}
-
-function cake(){
-document.getElementById("cakeMsg").innerText="Cake Cut 🎉"
-confetti({particleCount:200,spread:120})
-setTimeout(()=>next("s7","s8"),1500)
-}
-
-let photos=["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg","photo5.jpg"]
-let index=0
-
-function nextPhoto(){
-index++
-if(index>=photos.length){next("s8","s9");return}
-document.getElementById("slideImg").src=photos[index]
-}
-
-function prevPhoto(){
-index--
-if(index<0)index=0
-document.getElementById("slideImg").src=photos[index]
-}
-
-function run(){
-let btn=document.getElementById("noBtn")
-btn.style.position="absolute"
-btn.style.top=Math.random()*80+"%"
-btn.style.left=Math.random()*80+"%"
-}
-
-function yes(){
-next("s9","s10")
-confetti({particleCount:300,spread:180})
-}
-
-setInterval(()=>{
-let heart=document.createElement("div")
-heart.className="heart"
-heart.innerHTML="❤️"
-heart.style.left=Math.random()*100+"%"
-document.body.appendChild(heart)
-setTimeout(()=>heart.remove(),6000)
-},600)
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
-
